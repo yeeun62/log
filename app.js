@@ -119,5 +119,5 @@ app.post("/add", async (req, res) => {
 	}
 });
 
-app.listen(90, "0.0.0.0");
+app.listen(80, "0.0.0.0");
 //() => console.log("로그 서버실행")
