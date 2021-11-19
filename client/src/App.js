@@ -5,7 +5,6 @@ import { getDatabase, ref, onValue } from "firebase/database";
 import config from "./config";
 
 function App() {
-	// monitor.service.fail 링크로 되게
 	const [data, setData] = useState(null);
 
 	const scroll = useRef(null);
