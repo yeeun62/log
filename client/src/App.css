@@ -1,0 +1,86 @@
+@import url("https://fonts.googleapis.com/css?family=Lobster|Noto+Sans+TC&display=swap");
+@font-face {
+	font-family: "GmarketSansMedium";
+	src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff")
+		format("woff");
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: "GmarketSansLight";
+	src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansLight.woff")
+		format("woff");
+	font-weight: normal;
+	font-style: normal;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+body,
+input,
+textarea {
+	font-family: "GmarketSansLight", "Noto Sans TC", sans-serif;
+}
+
+.bold {
+	font-family: "GmarketSansMedium", sans-serif;
+}
+
+.logo {
+	font-family: "Lobster", cursive;
+	color: #e0de1b;
+	padding-left: 2rem;
+}
+
+a:link,
+a:visited,
+a:active,
+a:hover {
+	font-style: unset;
+	text-decoration: unset;
+	color: #282828;
+}
+
+button[type="button"],
+button[type="submit"],
+.handle-button {
+	display: inline-block;
+	font-family: "GmarketSansLight", "Noto Sans TC", sans-serif;
+	color: #282828;
+	background-color: #e0de1b;
+	border: 1px solid #e0de1b;
+	border-bottom-left-radius: 7px;
+	padding: 5px 7px;
+	cursor: pointer;
+}
+
+.log_box {
+	overflow: auto;
+	bottom: 0;
+	margin: 0 auto;
+	width: 80vw;
+	height: 80vh;
+	border: 5px solid #00adc7;
+	background-color: rgb(243, 243, 243);
+}
+
+/* .log_box::-webkit-scrollbar {
+	display: none;
+} */
+
+.data_box {
+	border-top: 2px solid #006495;
+	padding: 10px;
+}
+
+.data_box p {
+	font-size: 16px;
+	color: #006495;
+}
+
+.data_box span {
+	font-size: 14px;
+	color: black;
+}
