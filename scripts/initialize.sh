@@ -1,5 +1,6 @@
 #!/bin/bash
-cd /home/ubuntu/handle_log/server
+cd /home/ubuntu/handle_log
+
 npm install
 npm install pm2@latest -g
 sudo apt-get update
