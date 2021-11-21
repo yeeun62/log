@@ -40,9 +40,9 @@ for (const name of Object.keys(nets)) {
 
 app.get("/", (req, res) => {
 	res.send("서버");
-	console.log("client IP: " + requestIp.getClientIp(req));
+	//console.log("client IP: " + requestIp.getClientIp(req));
 	//console.log(nets);
-	console.log(ip.address());
+	//console.log(ip.address());
 	//console.log(results);
 });
 
@@ -102,12 +102,11 @@ app.post("/add", async (req, res) => {
 			});
 		}
 	} else {
-		set(newdbRef, {
-			handleSystemId,
-			logRegistTime,
-			logContent,
-			returnLogID,
-		});
+		let data = {};
+		for (let key in req.body) {
+			data[key] = req.body[key];
+		}
+		set(newdbRef, data);
 		res.status(200).json({
 			statusCode: 200,
 			message:
@@ -121,4 +120,3 @@ app.post("/add", async (req, res) => {
 });
 
 app.listen(80, "0.0.0.0");
-//() => console.log("로그 서버실행")

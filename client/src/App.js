@@ -39,20 +39,17 @@ function App() {
 				{data
 					? data.map((data) => {
 							return (
-								<div className="data_box">
-									<p className="bold">
-										handleSystemId: <span>{data.handleSystemId}</span>
-									</p>
-									<p className="bold">
-										logContent: <span>{data.logContent}</span>
-									</p>
-									<p className="bold">
-										logRegistTime: <span>{data.logRegistTime}</span>
-									</p>
-									<p className="bold">
-										returnLogID: <span>{data.returnLogID}</span>
-									</p>
-								</div>
+								<>
+									<div className="data_box">
+										{Object.keys(data).map((el) => {
+											return (
+												<p className="bold">
+													{el}: <span>{data[el]}</span>
+												</p>
+											);
+										})}
+									</div>
+								</>
 							);
 					  })
 					: null}
