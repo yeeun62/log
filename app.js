@@ -102,7 +102,7 @@ app.post("/add", async (req, res) => {
 			});
 		}
 	} else {
-		let data = {};
+		let data = { logRegistTime };
 		for (let key in req.body) {
 			data[key] = req.body[key];
 		}
