@@ -6,8 +6,6 @@ const admin = require("firebase-admin");
 //const serviceAccount = require("/home/ubuntu/handle-id-firebase-adminsdk-4o2u4-25c9c98276.json");
 const serviceAccount = require("/Users/bang-yeeun/Downloads/handleKeypair/handle-id-firebase-adminsdk-4o2u4-25c9c98276.json");
 const ip = require("ip");
-const os = require("os");
-const requestIp = require("request-ip");
 
 admin.initializeApp({
 	credential: admin.credential.cert(serviceAccount),
@@ -26,24 +24,8 @@ app.use(
 	})
 );
 
-const nets = os.networkInterfaces();
-const results = Object.create(null);
-for (const name of Object.keys(nets)) {
-	for (const net of nets[name]) {
-		if (net.family === "IPv4" && !net.internal) {
-			if (!results[name]) {
-				results["IP"] = net.address;
-			}
-		}
-	}
-}
-
 app.get("/", (req, res) => {
 	res.send("서버");
-	//console.log("client IP: " + requestIp.getClientIp(req));
-	//console.log(nets);
-	//console.log(ip.address());
-	//console.log(results);
 });
 
 app.post("/id", async (req, res) => {
@@ -70,14 +52,15 @@ app.post("/id", async (req, res) => {
 });
 
 app.post("/add", async (req, res) => {
-	let { handleSystemId, logContent, returnLogID } = req.body;
+	let { handleSystemId, logContent, returnLogID, addon } = req.body;
 	const db = getDatabase();
 	const dbRef = ref(db, "apiCall");
 	const newdbRef = push(dbRef);
 	const handleId = newdbRef._path;
 
 	let nullValue = [];
-	logRegistTime = String(new Date()).slice(4, 24);
+	let date = new Date().toLocaleString();
+	logRegistTime = Date.parse(date) / 1000;
 	if (!handleSystemId) {
 		nullValue.push("handleSystemId");
 	} else if (!logContent) {
@@ -102,7 +85,14 @@ app.post("/add", async (req, res) => {
 			});
 		}
 	} else {
+		let addObj = {};
+		if (addon && Object.keys(addon).length) {
+			for (let add in addon) {
+				addObj[add] = addon[add];
+			}
+		}
 		let data = {
+			addon: "-",
 			logID: handleId.pieces_[1],
 			logRegistTime,
 			logRequestIp: ip.address(),
