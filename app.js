@@ -102,7 +102,11 @@ app.post("/add", async (req, res) => {
 			});
 		}
 	} else {
-		let data = { logRegistTime };
+		let data = {
+			logID: handleId.pieces_[1],
+			logRegistTime,
+			logRequestIp: ip.address(),
+		};
 		for (let key in req.body) {
 			data[key] = req.body[key];
 		}
