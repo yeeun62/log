@@ -1,5 +1,5 @@
 #!/bin/bash
-cd /home/ubuntu/handle_log
+cd /home/ubuntu/handle_log/server
 
 npm install
 npm install pm2@latest -g

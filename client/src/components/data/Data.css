@@ -1,0 +1,56 @@
+.data_box {
+	height: 2.3rem;
+	display: flex;
+	border-bottom: 2px solid #006495;
+}
+
+.data_box:last-child {
+	border: none;
+}
+
+.data_box span {
+	font-size: 14px;
+	color: black;
+}
+
+.data {
+	line-height: 0rem;
+	text-align: center;
+}
+
+.one {
+	width: 10%;
+}
+
+.two {
+	width: 20%;
+}
+
+.three {
+	width: 10%;
+}
+
+.four {
+	width: 20%;
+}
+
+.five {
+	width: 10%;
+}
+
+.six {
+	width: 25%;
+}
+
+.seven {
+	width: 10%;
+}
+
+.sign {
+	margin-right: 0.1rem;
+	width: 0.5rem;
+	height: 0.5rem;
+	border-radius: 50%;
+	border: 1px solid #ccc;
+	display: inline-block;
+}

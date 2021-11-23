@@ -1,0 +1,14 @@
+.log_box_header {
+	overflow: auto;
+	width: 100%;
+	height: 7%;
+	background-color: #006495;
+	color: #fff;
+	display: flex;
+	flex-direction: row;
+}
+
+.log_box_header p {
+	font-size: 1rem;
+	text-align: center;
+}

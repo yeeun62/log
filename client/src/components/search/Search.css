@@ -1,0 +1,9 @@
+.serch_wrap {
+	display: flex;
+	flex-direction: row-reverse;
+	margin: 0.3rem;
+}
+
+.serch_btn {
+	margin-left: 0.1rem;
+}
