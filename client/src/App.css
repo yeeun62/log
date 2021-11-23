@@ -89,20 +89,15 @@ button[type="submit"],
 }
 
 .data_box {
+	height: 2.3rem;
 	display: flex;
 	flex-direction: row;
 	border-bottom: 2px solid #006495;
-	padding: 10px;
 }
 
 .data_box:last-child {
 	border: none;
 }
-
-/* .data_box p {
-	font-size: 16px;
-	color: #006495;
-} */
 
 .data_box span {
 	font-size: 14px;
@@ -115,6 +110,7 @@ button[type="submit"],
 }
 
 .data {
+	line-height: 0rem;
 	width: 100%;
 	text-align: center;
 }
