@@ -5,7 +5,7 @@ const { getDatabase, set, ref, onValue, push } = require("firebase/database");
 const admin = require("firebase-admin");
 //const serviceAccount = require("/home/ubuntu/handle-id-firebase-adminsdk-4o2u4-25c9c98276.json");
 const serviceAccount = require("/Users/bang-yeeun/Downloads/handleKeypair/handle-id-firebase-adminsdk-4o2u4-25c9c98276.json");
-const ip = require("ip");
+const requestIp = require("request-ip");
 
 admin.initializeApp({
 	credential: admin.credential.cert(serviceAccount),
@@ -25,6 +25,7 @@ app.use(
 );
 
 app.get("/", (req, res) => {
+	//res.send(requestIp.getClientIp(req));
 	res.send("서버");
 });
 
@@ -62,7 +63,6 @@ app.post("/add", async (req, res) => {
 		return "#" + Math.floor(Math.random() * 16777215).toString(16);
 	}
 
-	// 여기서 데이터를 한번 돌리면서 returnLogID 가 있다면 color를 해당 color로 저장
 	let color;
 	const starCountRef = ref(db, "apiCall");
 	onValue(
@@ -117,7 +117,7 @@ app.post("/add", async (req, res) => {
 					addon: "-",
 					logID: handleId.pieces_[1],
 					logRegistTime,
-					logRequestIp: ip.address(),
+					logRequestIp: requestIp.getClientIp(req),
 				};
 				for (let key in req.body) {
 					data[key] = req.body[key];

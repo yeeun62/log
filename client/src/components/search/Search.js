@@ -14,17 +14,19 @@ function Serch({ changeData, originData }) {
 			originData.map((el) => {
 				for (let key in el) {
 					if (typeof el[key] === "object") {
-						for (let addon in el[key]) {
-							if (
-								addon.includes(serch) ||
-								String(el[key][addon].includes(serch))
-							) {
+						let boolean = false;
+						Object.keys(el[key]).map((addel) => {
+							console.log(addel);
+							if (addel.includes(serch) || el[key][addel].includes(serch)) {
 								result.push(el);
+								boolean = true;
 							}
+						});
+						if (boolean) {
+							break;
 						}
-						break;
 					}
-					if (String(el[key]).includes(serch)) {
+					if (String(el[key]).includes(serch) && key !== "color") {
 						result.push(el);
 						break;
 					}

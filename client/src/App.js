@@ -1,7 +1,13 @@
 import React, { useState, useRef } from "react";
 import { useEffect } from "react";
 import "./App.css";
-import { getDatabase, ref, onValue } from "firebase/database";
+import {
+	getDatabase,
+	ref,
+	onValue,
+	query,
+	limitToLast,
+} from "firebase/database";
 import config from "./config";
 import Data from "./components/data/Data";
 import Search from "./components/search/Search";

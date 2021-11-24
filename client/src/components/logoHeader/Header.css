@@ -5,7 +5,6 @@
 	background-color: #006495;
 	color: #fff;
 	display: flex;
-	flex-direction: row;
 }
 
 .log_box_header p {

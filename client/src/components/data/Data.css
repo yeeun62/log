@@ -46,11 +46,27 @@
 	width: 10%;
 }
 
-.sign {
+.sign_color {
+	position: relative;
 	margin-right: 0.1rem;
 	width: 0.5rem;
 	height: 0.5rem;
 	border-radius: 50%;
 	border: 1px solid #ccc;
 	display: inline-block;
+	cursor: pointer;
+}
+
+.sign_hex {
+	position: absolute;
+	top: 80%;
+	left: 80%;
+	width: 4rem;
+	height: 1.5rem;
+	background-color: #e0de1b;
+}
+
+.sign_hex p {
+	color: #282828;
+	font-size: 0.8rem;
 }
