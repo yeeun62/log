@@ -1,18 +1,17 @@
 import React, { useState, useRef } from "react";
 import { useEffect } from "react";
 import "./App.css";
-import { getDatabase, ref, onValue } from "firebase/database";
+import { getDatabase, ref, onValue, set } from "firebase/database";
 import config from "./config";
 import Data from "./components/data/Data";
-import Search from "./components/search/Search";
+import Nav from "./components/nav/Nav";
 import Header from "./components/logoHeader/Header";
 
 function App() {
 	const [data, setData] = useState(null);
 	const [originData, setOriginData] = useState(null);
-
+	const [backgroudColor, setBackgroundColor] = useState("");
 	const scroll = useRef(null);
-
 	const db = getDatabase();
 
 	useEffect(() => {
@@ -23,6 +22,9 @@ function App() {
 			for (let el in logData) {
 				logArr.push(logData[el]);
 			}
+			let background = logArr.pop();
+			setBackgroundColor(background.color);
+			// setBackgroundColor(logArr.pop());
 			setData(logArr);
 			setOriginData(logArr);
 		});
@@ -41,12 +43,31 @@ function App() {
 		setData(data);
 	};
 
+	const changeBackground = (color) => {
+		set(ref(db, "apiCall/background"), {
+			color,
+		});
+	};
+
 	return (
 		<div>
-			<h1 className="logo">handle</h1>
+			<h1
+				className="logo"
+				onClick={() => {
+					window.location.replace("/");
+				}}
+			>
+				handle
+			</h1>
 			<div className="log_wrap">
-				<Search originData={originData} changeData={changeData} />
-				<Header />
+				<Nav
+					originData={originData}
+					changeData={changeData}
+					changeBackground={changeBackground}
+					setBackgroundColor={setBackgroundColor}
+					backgroudColor={backgroudColor}
+				/>
+				<Header backgroudColor={backgroudColor} />
 				<div className="log_box" ref={scroll}>
 					{data ? (
 						data.length ? (

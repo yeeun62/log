@@ -3,18 +3,7 @@ import "./Data.css";
 
 function Data({ data }) {
 	const [color, setColor] = useState("");
-
-	// const ConvertRGBtoHex = (rgb) => {
-	// 	let result = "";
-	// 	let rbgArr = rgb.split(",");
-	// 	for (let el of rbgArr) {
-	// 		let rgbNum = Number(el);
-	// 		let hexadecimal = rgbNum.toString(16);
-	// 		result += hexadecimal;
-	// 	}
-	// 	setColor("#" + result);
-	// };
-	// ConvertRGBtoHex(e.target.style.background.slice(4, -1));
+	const [show, setShow] = useState(false);
 
 	let logDate = () => {
 		let date = new Date(data.logRegistTime * 1000);
@@ -33,13 +22,17 @@ function Data({ data }) {
 			<p className="data one">
 				<div
 					className="sign_color"
-					// onClick={() => setColor(data.color)}
+					onClick={() => {
+						setColor(data.color);
+						setShow(!show);
+					}}
 					style={{ background: data.color }}
-				>
-					{/* <div className="sign_hex">
+				></div>
+				{show ? (
+					<div className="sign_hex">
 						<p>{color}</p>
-					</div> */}
-				</div>
+					</div>
+				) : null}
 				{data.handleSystemId}
 			</p>
 			<p className="data two">{data.logContent}</p>

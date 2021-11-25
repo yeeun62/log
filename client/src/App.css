@@ -32,6 +32,8 @@ textarea {
 	font-family: "Lobster", cursive;
 	color: #e0de1b;
 	padding-left: 2rem;
+	width: 1rem;
+	cursor: pointer;
 }
 
 a:link,
@@ -59,7 +61,7 @@ button[type="submit"],
 .log_wrap {
 	margin: 0 auto;
 	width: 90vw;
-	height: 80vh;
+	height: 75vh;
 }
 
 .log_box {
@@ -70,9 +72,4 @@ button[type="submit"],
 	height: 100%;
 	border: 5px solid #00adc7;
 	background-color: rgb(243, 243, 243);
-}
-
-.data_wrap {
-	display: flex;
-	flex-direction: row;
 }
