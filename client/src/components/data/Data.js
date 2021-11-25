@@ -36,9 +36,9 @@ function Data({ data }) {
 					// onClick={() => setColor(data.color)}
 					style={{ background: data.color }}
 				>
-					<div className="sign_hex">
+					{/* <div className="sign_hex">
 						<p>{color}</p>
-					</div>
+					</div> */}
 				</div>
 				{data.handleSystemId}
 			</p>

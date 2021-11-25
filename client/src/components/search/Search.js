@@ -16,7 +16,7 @@ function Serch({ changeData, originData }) {
 					if (typeof el[key] === "object") {
 						let boolean = false;
 						Object.keys(el[key]).map((addel) => {
-							console.log(addel);
+							console.log(el[key]);
 							if (addel.includes(serch) || el[key][addel].includes(serch)) {
 								result.push(el);
 								boolean = true;
