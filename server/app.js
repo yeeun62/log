@@ -2,10 +2,13 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const { getDatabase, set, ref, onValue, push } = require("firebase/database");
+const { swaggerUi, specs } = require("./modules/swagger");
 const admin = require("firebase-admin");
 // const serviceAccount = require("/home/ubuntu/handle-id-firebase-adminsdk-4o2u4-25c9c98276.json");
 const serviceAccount = require("/Users/bang-yeeun/Downloads/handleKeypair/handle-id-firebase-adminsdk-4o2u4-25c9c98276.json");
 const requestIp = require("request-ip");
+
+app.use("/doc", swaggerUi.serve, swaggerUi.setup(specs));
 
 admin.initializeApp({
 	credential: admin.credential.cert(serviceAccount),

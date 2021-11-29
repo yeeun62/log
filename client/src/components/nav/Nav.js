@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ColorPicker, useColor } from "react-color-palette";
 import "react-color-palette/lib/css/styles.css";
 import "./Nav.css";
 
-function Nav({ changeData, originData, changeBackground }) {
+function Nav({ changeData, originData, changeBackground, backgroudColor }) {
 	const [serch, setSerch] = useState("");
 	const [changeColor, setChangeColor] = useState(false);
 	const [color, setColor] = useColor("hex", "#ccc");
@@ -55,7 +55,7 @@ function Nav({ changeData, originData, changeBackground }) {
 				색상 초기화
 			</button>
 			{changeColor ? (
-				<div className="color_picker" onChange={() => console.log("!!")}>
+				<div className="color_picker">
 					<ColorPicker
 						width={280}
 						height={100}

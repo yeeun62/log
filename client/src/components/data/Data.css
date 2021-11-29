@@ -1,23 +1,19 @@
 .data_box {
-	/* overflow: auto; */
 	display: flex;
 	border-bottom: 2px solid #006495;
+	text-align: center;
 }
-
 .data_box:last-child {
 	border: none;
 }
-
 .data_box span {
 	font-size: 14px;
 	color: black;
 }
-
 .data {
 	line-height: 0rem;
 	text-align: center;
 }
-
 .sign_color {
 	margin-right: 0.1rem;
 	width: 0.5rem;
@@ -27,7 +23,6 @@
 	display: inline-block;
 	cursor: pointer;
 }
-
 .sign_hex {
 	position: absolute;
 	top: 100%;
@@ -36,8 +31,55 @@
 	height: 1.5rem;
 	background-color: #e0de1b;
 }
-
 .sign_hex p {
 	color: #282828;
 	font-size: 0.8rem;
 }
+.one {
+	position: relative;
+	width: 10%;
+}
+.two {
+	width: 20%;
+}
+.three {
+	width: 10%;
+}
+.four {
+	width: 20%;
+}
+.five {
+	width: 10%;
+}
+.six {
+	width: 25%;
+}
+.seven {
+	display: flex;
+	text-align: center;
+	width: 10%;
+}
+/* .one {
+  position: relative;
+  width: 150px;
+}
+.two {
+  width: 250px;
+}
+.three {
+  width: 200px;
+}
+.four {
+  width: 300px;
+}
+.five {
+  width: 150px;
+}
+.six {
+  width: 300px;
+}
+.seven {
+  display: flex;
+  text-align: center;
+  width: 300px;
+} */
