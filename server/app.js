@@ -87,7 +87,14 @@ app.post("/id", async (req, res) => {
  */
 
 app.post("/add", async (req, res) => {
-	let { handleSystemId, logContent, returnLogID, addon } = req.body;
+	let {
+		handleSystemId,
+		logContent,
+		returnLogID,
+		addon,
+		logRequestIp,
+		logRegistTime,
+	} = req.body;
 	const db = getDatabase();
 	const dbRef = ref(db, "apiCall");
 	const newdbRef = push(dbRef);
@@ -115,7 +122,7 @@ app.post("/add", async (req, res) => {
 
 			let nullValue = [];
 			let date = new Date().toLocaleString();
-			logRegistTime = Date.parse(date) / 1000;
+			let time = Date.parse(date) / 1000;
 			if (!handleSystemId) {
 				nullValue.push("handleSystemId");
 			} else if (!logContent) {
@@ -146,13 +153,24 @@ app.post("/add", async (req, res) => {
 						addObj[add] = addon[add];
 					}
 				}
-				let data = {
-					color: color,
-					addon: "-",
-					logID: handleId.pieces_[1],
-					logRegistTime,
-					logRequestIp: requestIp.getClientIp(req),
-				};
+				let data;
+				if (logRequestIp && logRegistTime) {
+					data = {
+						color: color,
+						addon: "-",
+						logID: handleId.pieces_[1],
+						logRegistTime: logRegistTime,
+						logRequestIp: logRequestIp,
+					};
+				} else {
+					data = {
+						color: color,
+						addon: "-",
+						logID: handleId.pieces_[1],
+						logRegistTime: time,
+						logRequestIp: requestIp.getClientIp(req),
+					};
+				}
 				for (let key in req.body) {
 					data[key] = req.body[key];
 				}
