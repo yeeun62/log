@@ -8,7 +8,7 @@ const admin = require("firebase-admin");
 const serviceAccount = require("/Users/bang-yeeun/Downloads/handleKeypair/handle-id-firebase-adminsdk-4o2u4-25c9c98276.json");
 const requestIp = require("request-ip");
 
-app.use("/doc", swaggerUi.serve, swaggerUi.setup(specs));
+app.use("/api-doc", swaggerUi.serve, swaggerUi.setup(specs));
 
 admin.initializeApp({
 	credential: admin.credential.cert(serviceAccount),
@@ -28,8 +28,11 @@ app.use(
 );
 
 app.get("/", (req, res) => {
-	//res.send(requestIp.getClientIp(req));
 	res.send("서버");
+});
+
+app.get("/doc", (req, res) => {
+	res.redirect("https://documenter.getpostman.com/view/16380618/UVJbJyBj");
 });
 
 app.post("/id", async (req, res) => {
@@ -54,6 +57,34 @@ app.post("/id", async (req, res) => {
 		}
 	});
 });
+
+/**
+ * @swagger
+ *  paths:
+ *    /add:
+ *      post:
+ *        tags:
+ *        - "log"
+ *        summary: "로그생성 API입니다."
+ *        description: ""
+ *        consumes:
+ *        - "application/json"
+ *        produces:
+ *        - "application/json"
+ *        parameters:
+ *        - in: "body"
+ *          name: "handleSystemId"
+ *          description: "시스템 고유 아이디"
+ *          required: true
+ *          schema:
+ *            $ref: "#/swagger/log"
+ *        - in: "body"
+ *          name: "logContent"
+ *          description: "로그 내용"
+ *          required: true
+ *          schema:
+ *            $ref: "#/swagger/log"
+ */
 
 app.post("/add", async (req, res) => {
 	let { handleSystemId, logContent, returnLogID, addon } = req.body;

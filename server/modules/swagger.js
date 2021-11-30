@@ -13,30 +13,9 @@ const options = {
 		host: "localhost:80",
 		basePath: "/",
 	},
-	apis: ["../*.js", "../swagger/*"],
+	apis: ["app.js", "./swagger/*.js"],
 };
 
 const specs = swaggereJsdoc(options);
-
-/**
- * @swagger
- *  /add:
- *    post:
- *      tags:
- *      - product
- *      description: 모든 제품 조회
- *      produces:
- *      - application/json
- *      parameters:
- *        - in: body
- *          name: category
- *          required: false
- *          schema:
- *            type: integer
- *            description: 카테고리
- *      responses:
- *       200:
- *        description: 제품 조회 성공
- */
 
 module.exports = { swaggerUi, specs };

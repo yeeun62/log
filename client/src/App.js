@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter, Switch, Route, useHistory } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Redirect } from "react-router-dom";
 import "./App.css";
 import { getDatabase, ref, onValue, set } from "firebase/database";
 import config from "./config";
@@ -39,21 +39,22 @@ function App() {
 
 	return (
 		<BrowserRouter>
-			<Switch>
-				<Route exact path="/">
-					<Main
-						data={data}
-						originData={originData}
-						changeData={changeData}
-						changeBackground={changeBackground}
-						setBackgroundColor={setBackgroundColor}
-						backgroudColor={backgroudColor}
-					/>
-				</Route>
-				<Route path="/doc">
-					<Doc />
-				</Route>
-			</Switch>
+			<Routes>
+				<Route
+					path="/"
+					element={
+						<Main
+							data={data}
+							originData={originData}
+							changeData={changeData}
+							changeBackground={changeBackground}
+							setBackgroundColor={setBackgroundColor}
+							backgroudColor={backgroudColor}
+						/>
+					}
+				></Route>
+				<Route path="/doc" element={<Doc />} />
+			</Routes>
 		</BrowserRouter>
 	);
 }
