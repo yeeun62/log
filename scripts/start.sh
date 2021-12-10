@@ -9,5 +9,4 @@ export STORAGEBUCKET=$(aws ssm get-parameters --region ap-northeast-2 --names ST
 export MESSAGING_SENDER_ID=$(aws ssm get-parameters --region ap-northeast-2 --names MESSAGING_SENDER_ID --query Parameters[0].Value | sed 's/"//g')
 export APP_ID=$(aws ssm get-parameters --region ap-northeast-2 --names APP_ID --query Parameters[0].Value | sed 's/"//g')
 
-
 authbind --deep pm2 start app.js
