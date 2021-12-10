@@ -27,12 +27,11 @@ app.use(
 );
 
 app.get("/", (req, res) => {
-	console.log(
+	res.send(
 		process.env.API_KEY,
 		process.env.AUTH_DOMAIN,
 		process.env.PROJECT_ID
 	);
-	res.send("서버");
 });
 
 app.get("/doc", (req, res) => {
