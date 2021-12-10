@@ -4,8 +4,8 @@ const cors = require("cors");
 const { getDatabase, set, ref, onValue, push } = require("firebase/database");
 const { swaggerUi, specs } = require("./modules/swagger");
 const admin = require("firebase-admin");
-const serviceAccount = require("/home/ubuntu/handle-id-firebase-adminsdk-4o2u4-25c9c98276.json");
-// const serviceAccount = require("/Users/bang-yeeun/Downloads/handleKeypair/handle-id-firebase-adminsdk-4o2u4-25c9c98276.json");
+// const serviceAccount = require("/home/ubuntu/handle-id-firebase-adminsdk-4o2u4-25c9c98276.json");
+const serviceAccount = require("/Users/bang-yeeun/Downloads/handleLogKey/handle-id-firebase-adminsdk-4o2u4-25c9c98276.json");
 const requestIp = require("request-ip");
 
 app.use("/api-doc", swaggerUi.serve, swaggerUi.setup(specs));
@@ -27,11 +27,7 @@ app.use(
 );
 
 app.get("/", (req, res) => {
-	res.send(
-		process.env.API_KEY,
-		process.env.AUTH_DOMAIN,
-		process.env.PROJECT_ID
-	);
+	res.send("로그서버");
 });
 
 app.get("/doc", (req, res) => {
@@ -89,10 +85,11 @@ app.post("/id", async (req, res) => {
  *            $ref: "#/swagger/log"
  */
 
+function getRandomColor() {
+	return "#" + Math.floor(Math.random() * 16777215).toString(16);
+}
+
 app.post("/err", async (req, res) => {
-	function getRandomColor() {
-		return "#" + Math.floor(Math.random() * 16777215).toString(16);
-	}
 	const {
 		handleSystemId,
 		logID,
