@@ -18,7 +18,6 @@ admin.initializeApp({
 const config = require("./config");
 const db = getDatabase();
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
 app.use(
 	cors({
 		origin: true,
@@ -28,6 +27,7 @@ app.use(
 );
 
 app.get("/", (req, res) => {
+	console.log(process.env.API_KEY, process.env.AUTH_DOMAIN);
 	res.send("서버");
 });
 
@@ -86,23 +86,74 @@ app.post("/id", async (req, res) => {
  *            $ref: "#/swagger/log"
  */
 
-app.post("/add", async (req, res) => {
-	let {
+app.post("/err", async (req, res) => {
+	function getRandomColor() {
+		return "#" + Math.floor(Math.random() * 16777215).toString(16);
+	}
+	const {
 		handleSystemId,
+		logID,
 		logContent,
 		returnLogID,
-		addon,
 		logRequestIp,
 		logRegistTime,
 	} = req.body;
+
+	console.log(req.body);
+
+	const db = getDatabase();
+	const dbRef = ref(db, "apiCall");
+	const newdbRef = push(dbRef);
+
+	let color;
+	const starCountRef = ref(db, "apiCall");
+	onValue(
+		starCountRef,
+		async (snapshot) => {
+			let logData = snapshot.val();
+
+			if (returnLogID === "-") {
+				color = getRandomColor();
+				console.log("!?", color);
+			} else if (returnLogID.length > 2) {
+				for (let el in logData) {
+					if (logData[el].color === "#006495") {
+						continue;
+					}
+					if (logData[el].logID === returnLogID) {
+						console.log("ddddddd", logData[el]);
+						console.log("color", logData[el].color);
+						//color = logData[el].color;
+						break;
+					}
+				}
+			}
+			let data = {
+				color: color,
+				handleSystemId,
+				logID,
+				logContent,
+				addon: "-",
+				logRegistTime,
+				logRequestIp,
+				returnLogID,
+			};
+			console.log("색상", color);
+			set(newdbRef, data);
+		},
+		{
+			onlyOnce: true,
+		}
+	);
+});
+
+app.post("/add", async (req, res) => {
+	let { handleSystemId, logContent, returnLogID, addon } = req.body;
+
 	const db = getDatabase();
 	const dbRef = ref(db, "apiCall");
 	const newdbRef = push(dbRef);
 	const handleId = newdbRef._path;
-
-	function getRandomColor() {
-		return "#" + Math.floor(Math.random() * 16777215).toString(16);
-	}
 
 	let color;
 	const starCountRef = ref(db, "apiCall");
@@ -148,20 +199,11 @@ app.post("/add", async (req, res) => {
 				}
 			} else {
 				let addObj = {};
+				let data;
 				if (addon && Object.keys(addon).length) {
 					for (let add in addon) {
 						addObj[add] = addon[add];
 					}
-				}
-				let data;
-				if (logRequestIp && logRegistTime) {
-					data = {
-						color: color,
-						addon: "-",
-						logID: handleId.pieces_[1],
-						logRegistTime: logRegistTime,
-						logRequestIp: logRequestIp,
-					};
 				} else {
 					data = {
 						color: color,
