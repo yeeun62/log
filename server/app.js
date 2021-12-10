@@ -27,7 +27,11 @@ app.use(
 );
 
 app.get("/", (req, res) => {
-	console.log(process.env.API_KEY, process.env.AUTH_DOMAIN);
+	console.log(
+		process.env.API_KEY,
+		process.env.AUTH_DOMAIN,
+		process.env.PROJECT_ID
+	);
 	res.send("서버");
 });
 
