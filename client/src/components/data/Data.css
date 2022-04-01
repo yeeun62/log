@@ -1,63 +1,63 @@
 .data_box {
-	display: flex;
-	border-bottom: 2px solid #006495;
-	text-align: center;
+  display: flex;
+  border-bottom: 2px solid #006495;
+  text-align: center;
 }
 .data_box:last-child {
-	border: none;
+  border: none;
 }
 .data_box span {
-	font-size: 14px;
-	color: black;
+  font-size: 14px;
+  color: black;
 }
 .data {
-	line-height: 0rem;
-	text-align: center;
+  line-height: 0rem;
+  text-align: center;
 }
 .sign_color {
-	margin-right: 0.1rem;
-	width: 0.5rem;
-	height: 0.5rem;
-	border-radius: 50%;
-	border: 1px solid #ccc;
-	display: inline-block;
-	cursor: pointer;
+  margin-right: 0.1rem;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  border: 1px solid #ccc;
+  display: inline-block;
+  cursor: pointer;
 }
 .sign_hex {
-	position: absolute;
-	top: 100%;
-	left: 45%;
-	width: 4rem;
-	height: 1.5rem;
-	background-color: #e0de1b;
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  width: 4rem;
+  height: 1.5rem;
+  background-color: #e0de1b;
 }
 .sign_hex p {
-	color: #282828;
-	font-size: 0.8rem;
+  color: #282828;
+  font-size: 0.8rem;
 }
 .one {
-	position: relative;
-	width: 10%;
+  position: relative;
+  width: 10%;
 }
 .two {
-	width: 20%;
+  width: 20%;
 }
 .three {
-	width: 10%;
+  width: 10%;
 }
 .four {
-	width: 20%;
+  width: 20%;
 }
 .five {
-	width: 10%;
+  width: 10%;
 }
 .six {
-	width: 25%;
+  width: 25%;
 }
 .seven {
-	display: flex;
-	text-align: center;
-	width: 10%;
+  display: flex;
+  text-align: center;
+  width: 10%;
 }
 /* .one {
   position: relative;
